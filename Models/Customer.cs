@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace coreEntityFrameworkDatabaseFirstLook.Models;
-
+// My Database from SSMS
 public partial class Customer
 { 
     public int CustomerId { get; set; }
