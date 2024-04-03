@@ -1,14 +1,25 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using coreEntityFrameworkDatabaseFirstLook.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace coreEntityFrameworkDatabaseFirstLook.Controllers
 {
     public class CustomerController : Controller
     {
+        private readonly FirstLookDbContext _context;
+        public CustomerController()
+        {
+            // Initialize context
+            _context = new FirstLookDbContext();    
+        }
         // GET: CustomerController
         public ActionResult Index()
         {
-            return View();
+            // context.Customers.ToList method get all the customers and assigning them to the customers.
+            // Lambda expression, which helps in communicating with the DB set in th Model AppDBContext or FirstLookDbContext in my case
+            var customers = _context.Customers.ToList();
+            // Bind View and generate the view
+            return View(customers);
         }
 
         // GET: CustomerController/Details/5
